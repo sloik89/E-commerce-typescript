@@ -48,3 +48,28 @@ import type { RootState, AppDispatch } from "./store";
 export const useAppDispatch: () => AppDispatch = useDispatch;
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 ```
+
+## Shared Layouts
+
+- Home Layots display Landing
+
+```ts
+      {
+        index: true,
+        element: <Landing />,
+      },
+```
+
+## Talwind
+
+### custom class
+
+- in index.css
+
+```css
+@layer components {
+  .align-element {
+    @apply mx-auto max-w-6xl px-8;
+  }
+}
+```

@@ -1,0 +1,39 @@
+import { useNavigate, Link } from "react-router-dom";
+import { Button } from "./ui/button";
+import { useState } from "react";
+const Header = () => {
+  const navigate = useNavigate();
+  const [user, setUser] = useState<{ username: string } | null>({
+    username: "demo user",
+  });
+  const handleLogout = () => {
+    setUser(null);
+    console.log("logout");
+    navigate("/");
+  };
+  return (
+    <header>
+      <div className="align-element flex justify-center sm:justify-end py-2">
+        {user ? (
+          <div className="flex sm:gap-x-8 gap-x-2 items-center">
+            <p className="text-xs sm:text-sm">Hello, {user.username}</p>
+            <Button onClick={handleLogout} variant="link" size="sm">
+              logout
+            </Button>
+          </div>
+        ) : (
+          <div className="flex gap-x-6 justify-center items-center mr-4">
+            <Button size="sm" asChild variant="link">
+              <Link to="/login">Sign in / Guest</Link>
+            </Button>
+            <Button size="sm" asChild variant="link">
+              <Link to="/register">Register</Link>
+            </Button>
+          </div>
+        )}
+      </div>
+    </header>
+  );
+};
+
+export default Header;
