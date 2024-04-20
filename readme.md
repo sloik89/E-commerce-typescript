@@ -62,7 +62,7 @@ export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 
 ## Talwind
 
-### custom class
+### custom class in talwind
 
 - in index.css
 
