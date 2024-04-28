@@ -2,6 +2,7 @@ export type ProductsResponse = {
   products: Products[];
 };
 type Products = {
+  _id: string;
   averageRating: number;
   category: string;
   colors: string[];
@@ -13,4 +14,5 @@ type Products = {
   freeShipping: boolean;
   image: string;
   inventory: number;
+  name: string;
 };

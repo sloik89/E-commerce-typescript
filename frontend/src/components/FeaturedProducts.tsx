@@ -1,9 +1,10 @@
 import React from "react";
-import { SectionTitle } from "./";
+import { SectionTitle, ProductsGrid } from "./";
 const FeaturedProducts = () => {
   return (
     <section className="pt-5">
       <SectionTitle text="featured products" />
+      <ProductsGrid />
     </section>
   );
 };
