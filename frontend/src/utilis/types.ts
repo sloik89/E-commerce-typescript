@@ -1,5 +1,6 @@
 export type ProductsResponse = {
   products: Products[];
+  totalProducts: number;
 };
 type Products = {
   _id: string;
