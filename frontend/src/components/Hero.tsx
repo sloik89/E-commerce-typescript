@@ -3,7 +3,7 @@ import { Button } from "./ui/button";
 import { HeroCarousel } from "./";
 const Hero = () => {
   return (
-    <section className="grid grid-cols-1 lg:grid-cols-2 gap-24">
+    <section className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
       <div>
         <h1 className="text-5xl max-w-2xl font-bold tracking-tight sm:text-6xl">
           We are changing the way people shop
