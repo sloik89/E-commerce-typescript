@@ -16,3 +16,4 @@ export { default as Filters } from "./Filters";
 export { default as ProductsContainer } from "./ProductsContainer";
 export { default as PaginateContainer } from "./PaginateContainer";
 export { default as ProductsList } from "./ProductsList";
+export { default as Loading } from "./Loading";

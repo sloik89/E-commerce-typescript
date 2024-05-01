@@ -73,3 +73,36 @@ export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
   }
 }
 ```
+
+### Fetch data using loader
+
+- setting up loader in the route
+
+```ts
+{
+       index: true,
+       element: <Landing />,
+       errorElement: <ErrorElement />,
+       loader: landingLoader,
+     },
+```
+
+- inport type of loaderFunction
+
+```ts
+import { type LoaderFunction } from "react-router-dom";
+```
+
+```ts
+import { customFetch, type ProductsResponse } from "@/utilis";
+```
+
+- create function
+
+```ts
+export const loader: LoaderFunction = async (): Promise<ProductsResponse> => {
+  const res = await customFetch<ProductsResponse>("products");
+  console.log(res);
+  return { ...res.data };
+};
+```
