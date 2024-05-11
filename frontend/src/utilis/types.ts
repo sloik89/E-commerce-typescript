@@ -17,3 +17,13 @@ type Products = {
   inventory: number;
   name: string;
 };
+export type Params = {
+  search?: string;
+  category?: string;
+  company?: string;
+  order?: string;
+  price?: string;
+  shippieng?: string;
+  page?: number;
+};
+export type ProductsResponseWithParams = ProductsResponse & { params: Params };

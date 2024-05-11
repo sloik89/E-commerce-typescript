@@ -1,11 +1,22 @@
 import React from "react";
 import { Filters, PaginateContainer, ProductsContainer } from "../components/";
-import { customFetch, type ProductsResponse } from "@/utilis";
+import {
+  customFetch,
+  type ProductsResponse,
+  type ProductsResponseWithParams,
+} from "@/utilis";
 import { useLoaderData, type LoaderFunction } from "react-router-dom";
-export const loader: LoaderFunction = async (): Promise<ProductsResponse> => {
-  const res = await customFetch<ProductsResponse>("products");
-  console.log(res);
-  return { ...res.data };
+export const loader: LoaderFunction = async ({
+  request,
+}): Promise<ProductsResponseWithParams> => {
+  const params = Object.fromEntries([
+    ...new URL(request.url).searchParams.entries(),
+  ]);
+  console.log(request);
+  console.log(params);
+  const res = await customFetch<ProductsResponse>("products", { params });
+
+  return { ...res.data, params };
 };
 const Products = () => {
   return (
