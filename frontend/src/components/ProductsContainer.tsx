@@ -7,9 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 const ProductsContainer = () => {
   const { totalProducts } = useLoaderData() as ProductsResponse;
-
   const [layout, setLayout] = useState<"grid" | "list">("grid");
-  console.log(totalProducts);
   return (
     <>
       <section>
