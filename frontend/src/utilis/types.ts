@@ -1,6 +1,11 @@
 export type ProductsResponse = {
   products: Products[];
   totalProducts: number;
+  meta: MetaResponse;
+};
+type MetaResponse = {
+  categories: string[];
+  companies: string[];
 };
 type Products = {
   _id: string;

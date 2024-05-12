@@ -106,3 +106,16 @@ export const loader: LoaderFunction = async (): Promise<ProductsResponse> => {
   return { ...res.data };
 };
 ```
+
+# use data in components
+
+```ts
+import { useLoaderData } from "react-router-dom";
+const { products } = useLoaderData() as ProductsResponse;
+```
+
+# add params on frontend
+
+```ts
+
+```

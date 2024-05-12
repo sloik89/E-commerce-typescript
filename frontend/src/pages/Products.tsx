@@ -12,8 +12,11 @@ export const loader: LoaderFunction = async ({
   const params = Object.fromEntries([
     ...new URL(request.url).searchParams.entries(),
   ]);
-  console.log(request);
-  console.log(params);
+  const params1 = [...new URL(request.url).searchParams.entries()];
+  const params2 = [...new URL(request.url).searchParams];
+
+  console.log(params1);
+  console.log(params2);
   const res = await customFetch<ProductsResponse>("products", { params });
 
   return { ...res.data, params };
