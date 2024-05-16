@@ -9,7 +9,7 @@ type FormRangeProps = {
 };
 const FormRange = ({ name, label, defaultValue }: FormRangeProps) => {
   const step = 1000;
-  const maxPrice = 100000;
+  const maxPrice = 120000;
   const defaultPrice = defaultValue ? Number(defaultValue) : maxPrice;
   const [selectedPrice, setSelectedPrice] = useState(defaultPrice);
   return (
