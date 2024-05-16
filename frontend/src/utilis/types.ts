@@ -28,7 +28,7 @@ export type Params = {
   company?: string;
   order?: string;
   price?: string;
-  shippieng?: string;
+  shipping?: string;
   page?: number;
 };
 export type ProductsResponseWithParams = ProductsResponse & { params: Params };
