@@ -6,14 +6,15 @@ import { LayoutGrid, List } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 const ProductsContainer = () => {
-  const { totalProducts } = useLoaderData() as ProductsResponse;
+  const { numofHists, meta } = useLoaderData() as ProductsResponse;
+  console.log(meta);
   const [layout, setLayout] = useState<"grid" | "list">("grid");
   return (
     <>
       <section>
         <div className="flex justify-between items-center">
           <div>
-            <h4>{totalProducts} products</h4>
+            <h4>{numofHists} products</h4>
           </div>
           <div className="flex gap-x-5">
             <Button
@@ -35,7 +36,7 @@ const ProductsContainer = () => {
         <Separator className="mt-5" />
       </section>
       <div>
-        {totalProducts > 0 ? (
+        {numofHists > 0 ? (
           layout === "grid" ? (
             <ProductsGrid />
           ) : (

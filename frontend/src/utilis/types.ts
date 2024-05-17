@@ -1,11 +1,16 @@
 export type ProductsResponse = {
   products: Products[];
   totalProducts: number;
+  numofHists: number;
   meta: MetaResponse;
 };
 type MetaResponse = {
   categories: string[];
   companies: string[];
+  pagination: {
+    page: number;
+    pages: number;
+  };
 };
 type Products = {
   _id: string;
