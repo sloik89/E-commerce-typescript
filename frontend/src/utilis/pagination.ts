@@ -10,7 +10,8 @@ export const constructUrl = ({
   search,
   pathname,
 }: ConstructUrlParams): string => {
-  return "/products";
+  console.log(pageNumber, search, pathname);
+  return `/products?page=${pageNumber}`;
 };
 type ConstructPrevUrlParams = {
   currentPage: number;
