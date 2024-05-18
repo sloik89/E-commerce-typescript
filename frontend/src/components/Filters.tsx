@@ -57,6 +57,7 @@ const Filters = () => {
       >
         <Link to="/products">reset</Link>
       </Button>
+      <Link to="/testpage">test</Link>
     </Form>
   );
 };

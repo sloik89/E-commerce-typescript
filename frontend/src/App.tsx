@@ -13,10 +13,13 @@ import {
   HomeLayout,
   Products,
   Product,
+  TestPage,
 } from "./pages";
 import { ErrorElement } from "./components";
 import { loader as landingLoader } from "./pages/Landing";
 import { loader as productsLoader } from "./pages/Products";
+import { loader as testLoader } from "./pages/TestPage";
+import { loader as singleProductLoader } from "./pages/SingleProduct";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -35,10 +38,17 @@ const router = createBrowserRouter([
         errorElement: <ErrorElement />,
         loader: productsLoader,
       },
+      // test page
+      {
+        path: "testpage",
+        element: <TestPage />,
+        loader: testLoader,
+      },
       {
         path: "products/:id",
         element: <Product />,
         errorElement: <ErrorElement />,
+        loader: singleProductLoader,
       },
       {
         path: "cart",

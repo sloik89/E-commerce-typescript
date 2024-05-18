@@ -10,7 +10,6 @@ export const constructUrl = ({
   search,
   pathname,
 }: ConstructUrlParams): string => {
-  console.log(pageNumber, search, pathname);
   let url = new URLSearchParams(search);
 
   url.set("page", pageNumber.toString());

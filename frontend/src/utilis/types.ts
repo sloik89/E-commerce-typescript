@@ -12,7 +12,7 @@ type MetaResponse = {
     pages: number;
   };
 };
-type Products = {
+export type Products = {
   _id: string;
   averageRating: number;
   category: string;
