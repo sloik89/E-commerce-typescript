@@ -11,7 +11,12 @@ export const constructUrl = ({
   pathname,
 }: ConstructUrlParams): string => {
   console.log(pageNumber, search, pathname);
-  return `/products?page=${pageNumber}`;
+  let url = new URLSearchParams(search);
+
+  url.set("page", pageNumber.toString());
+  const route = url.toString();
+
+  return `${pathname}?${route}`;
 };
 type ConstructPrevUrlParams = {
   currentPage: number;
@@ -25,8 +30,13 @@ export const constructPrevOrNextUrl = ({
   search,
   pathname,
 }: ConstructPrevUrlParams): { prevUrl: string; nextUrl: string } => {
-  const prevUrl = "/products";
-  const nextUrl = "/products";
+  let prevPage = currentPage - 1;
+  if (prevPage < 1) prevPage = pageCount;
+  const prevUrl = constructUrl({ pageNumber: prevPage, search, pathname });
+  let nextPage = currentPage + 1;
+  if (nextPage > pageCount) nextPage = 1;
+  const nextUrl = constructUrl({ pageNumber: nextPage, search, pathname });
+
   return {
     prevUrl,
     nextUrl,
