@@ -1,9 +1,10 @@
-import { useState } from "react";
+import React, { useState } from "react";
 type ColorsProps = {
   colors: string[];
+  active: string;
+  handleActive: React.Dispatch<React.SetStateAction<string>>;
 };
-const SelectProductColor = ({ colors }: ColorsProps) => {
-  const [active, setActive] = useState(colors[0]);
+const SelectProductColor = ({ colors, active, handleActive }: ColorsProps) => {
   return (
     <div>
       <p className="font-semibold text-lg mb-3">Colors</p>
@@ -13,12 +14,12 @@ const SelectProductColor = ({ colors }: ColorsProps) => {
             <button
               key={idx}
               className={`w-6 h-6 rounded-full hover:scale-110 transition-transform ${
-                item === active ? "scale-150" : ""
+                item === active ? "scale-150 border-2 border-primary" : ""
               }`}
               style={{
                 backgroundColor: item,
               }}
-              onClick={() => setActive(item)}
+              onClick={() => handleActive(item)}
             ></button>
           );
         })}

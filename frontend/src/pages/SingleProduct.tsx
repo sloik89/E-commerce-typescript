@@ -16,12 +16,21 @@ export const loader: LoaderFunction = async ({
   return res.data;
 };
 const SingleProduct = () => {
-  const { category, colors, company, image, name, description, price } =
-    useLoaderData() as SingleProduct;
-  console.log(category);
+  const {
+    category,
+    colors,
+    company,
+    image,
+    name,
+    description,
+    price,
+    inventory,
+  } = useLoaderData() as SingleProduct;
+  console.log(inventory);
   const dollarAmount = formatDollars(price);
   const [productColor, setProductColor] = useState(colors[0]);
   const [amount, setAmount] = useState(1);
+  const [active, setActive] = useState(colors[0]);
   return (
     <section>
       <div className="h-8 flex">
@@ -47,7 +56,11 @@ const SingleProduct = () => {
           <p className="mb-3 font-bold bg-secondary p-2">{dollarAmount}</p>
           <p className="max-w-[500px] leading-8 mb-4">{description}</p>
           {/* colors */}
-          <SelectProductColor colors={colors} />
+          <SelectProductColor
+            colors={colors}
+            active={active}
+            handleActive={setActive}
+          />
           <SelectProductAmount />
           <Button size="lg">Add to bag</Button>
         </div>
