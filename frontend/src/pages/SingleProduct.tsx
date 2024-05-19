@@ -5,6 +5,9 @@ import { customFetch, formatDollars } from "@/utilis";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { SelectProductAmount, SelectProductColor, Test } from "@/components/";
+import { addItem } from "@/features/cart/cartSlice";
+import { useDispatch } from "react-redux";
+import { useAppDispatch } from "@/hooks";
 import { Mode } from "../components/SelectProductAmount";
 export const loader: LoaderFunction = async ({
   request,
@@ -16,6 +19,7 @@ export const loader: LoaderFunction = async ({
   return res.data;
 };
 const SingleProduct = () => {
+  const dispatch = useAppDispatch();
   const {
     category,
     colors,
@@ -25,12 +29,26 @@ const SingleProduct = () => {
     description,
     price,
     inventory,
+    _id: id,
   } = useLoaderData() as SingleProduct;
 
   const dollarAmount = formatDollars(price);
   const [productColor, setProductColor] = useState(colors[0]);
   const [amount, setAmount] = useState(1);
   const [active, setActive] = useState(colors[0]);
+  const handleBag = () => {
+    console.log("handle bag");
+    dispatch(
+      addItem({
+        id,
+        title: name,
+        price: price.toString(),
+        amount,
+        productColor: active,
+        company,
+      })
+    );
+  };
   return (
     <section>
       <div className="h-8 flex">
@@ -66,7 +84,9 @@ const SingleProduct = () => {
             amount={amount}
             setAmount={setAmount}
           />
-          <Button size="lg">Add to bag</Button>
+          <Button onClick={handleBag} size="lg">
+            Add to bag
+          </Button>
         </div>
       </div>
       <Test />
