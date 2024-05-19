@@ -25,7 +25,10 @@ const PaginateContainer = () => {
     const url = constructUrl({ pageNumber, search, pathname });
     return (
       <PaginationItem key={pageNumber}>
-        <PaginationLink className={isActive ? "bg-secondary" : ""} to={url}>
+        <PaginationLink
+          className={isActive ? "bg-secondary pointer-events-none" : ""}
+          to={url}
+        >
           {pageNumber}
         </PaginationLink>
       </PaginationItem>
