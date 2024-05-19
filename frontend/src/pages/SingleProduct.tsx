@@ -5,7 +5,7 @@ import { customFetch, formatDollars } from "@/utilis";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { SelectProductAmount, SelectProductColor, Test } from "@/components/";
-
+import { Mode } from "../components/SelectProductAmount";
 export const loader: LoaderFunction = async ({
   request,
   params,
@@ -26,7 +26,7 @@ const SingleProduct = () => {
     price,
     inventory,
   } = useLoaderData() as SingleProduct;
-  console.log(inventory);
+
   const dollarAmount = formatDollars(price);
   const [productColor, setProductColor] = useState(colors[0]);
   const [amount, setAmount] = useState(1);
@@ -61,7 +61,11 @@ const SingleProduct = () => {
             active={active}
             handleActive={setActive}
           />
-          <SelectProductAmount />
+          <SelectProductAmount
+            mode={Mode.SingleProduct}
+            amount={amount}
+            setAmount={setAmount}
+          />
           <Button size="lg">Add to bag</Button>
         </div>
       </div>
