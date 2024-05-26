@@ -1,7 +1,11 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { useAppSelector } from "@/hooks";
 const Cart = () => {
+  const { cartItems } = useAppSelector((state) => state.cartState);
+  console.log(cartItems);
   return (
     <div>
       Cart
