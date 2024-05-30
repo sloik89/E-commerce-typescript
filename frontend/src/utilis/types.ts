@@ -43,6 +43,7 @@ export type CartItem = {
   amount: number;
   productColor: string;
   company: string;
+  image: string;
 };
 export type CartState = {
   cartItems: CartItem[];

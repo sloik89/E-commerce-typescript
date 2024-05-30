@@ -47,6 +47,7 @@ const SingleProduct = () => {
         amount,
         productColor: active,
         company,
+        image,
       })
     );
   };
