@@ -1,21 +1,36 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+
 import { useAppSelector } from "@/hooks";
+import { CartItemsList, CartTotals, SectionTitle } from "../components";
 const Cart = () => {
-  const { cartItems } = useAppSelector((state) => state.cartState);
-  console.log(cartItems);
+  const user = null;
+  const { numItemsInCart } = useAppSelector((state) => state.cartState);
+  if (numItemsInCart === 0) {
+    return <SectionTitle text="Empty card" />;
+  }
   return (
-    <div>
-      Cart
-      <Link className="text-red-900 text-7xl" to="/">
-        back home
-      </Link>
-      <Button asChild size="lg">
-        <Link to="/">back home</Link>
-      </Button>
-    </div>
+    <>
+      <SectionTitle text="Shopping card" />
+      <div className="mt-8 grid gap-8 lg:grid-cols-12">
+        <div className="lg:col-span-8">
+          <CartItemsList />
+        </div>
+        <div className="lg:col-span-4 lg:pl-4">
+          <CartTotals />
+          {user ? (
+            <Button asChild>
+              <Link to="/checkout">Procced to checkout</Link>
+            </Button>
+          ) : (
+            <Button asChild>
+              <Link to="/login">Please login</Link>
+            </Button>
+          )}
+        </div>
+      </div>
+    </>
   );
 };
 

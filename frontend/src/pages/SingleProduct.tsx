@@ -38,9 +38,10 @@ const SingleProduct = () => {
   const [active, setActive] = useState(colors[0]);
   const handleBag = () => {
     console.log("handle bag");
+
     dispatch(
       addItem({
-        id,
+        id: id + active,
         title: name,
         price: price.toString(),
         amount,
