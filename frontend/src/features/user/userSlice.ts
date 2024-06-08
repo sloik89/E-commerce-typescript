@@ -19,8 +19,10 @@ const userSlice = createSlice({
   initialState,
   reducers: {
     loginUser: (state, action: PayloadAction<User>) => {
+      console.log(action.payload);
       const user = action.payload;
-      localStorage.setItem("user", JSON.stringify("user"));
+      state.user = user;
+      localStorage.setItem("user", JSON.stringify(user));
       toast({ description: "Login successful" });
     },
     logoutUser: (state) => {

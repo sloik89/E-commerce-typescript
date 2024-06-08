@@ -13,7 +13,10 @@ export const action: ActionFunction = async ({ request }): Promise<null> => {
     const res = await customFetch.post("/auth/register", data);
     console.log(res);
   } catch (err) {
-    console.log(err);
+    const resError =
+      err instanceof AxiosError ? err.response?.data.msg : "Register Failed";
+    console.log(resError);
+    toast({ description: resError });
   }
   console.log(data);
   return null;

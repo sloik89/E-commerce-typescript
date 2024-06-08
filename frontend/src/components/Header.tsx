@@ -1,13 +1,19 @@
 import { useNavigate, Link } from "react-router-dom";
 import { Button } from "./ui/button";
 import { useState } from "react";
+import { useAppDispatch, useAppSelector } from "@/hooks";
+import { logoutUser } from "@/features/user/userSlice";
+
 const Header = () => {
+  const { user } = useAppSelector((state) => state.userState);
+  console.log(user);
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const [user, setUser] = useState<{ username: string } | null>({
-    username: "demo user",
-  });
+  // const [user, setUser] = useState<{ username: string } | null>({
+  //   username: "demo user",
+  // });
   const handleLogout = () => {
-    setUser(null);
+    dispatch(logoutUser());
     console.log("logout");
     navigate("/");
   };

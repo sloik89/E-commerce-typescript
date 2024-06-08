@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 const ProductsContainer = () => {
   const { numofHists, meta } = useLoaderData() as ProductsResponse;
-  console.log(meta);
+
   const [layout, setLayout] = useState<"grid" | "list">("grid");
   return (
     <>
