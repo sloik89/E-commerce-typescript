@@ -1,4 +1,11 @@
-import { redirect, Link, Form, ActionFunction } from "react-router-dom";
+import {
+  redirect,
+  Link,
+  Form,
+  ActionFunction,
+  useNavigate,
+} from "react-router-dom";
+import React from "react";
 import { Card, CardHeader, CardContent, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { toast } from "@/components/ui/use-toast";
@@ -7,7 +14,7 @@ import { customFetch } from "@/utilis";
 import { useDispatch } from "react-redux";
 import { type ReduxStore } from "@/store";
 import { loginUser } from "@/features/user/userSlice";
-import { FormInput } from "@/components";
+import { FormInput, SubmitBtn } from "@/components";
 export const action =
   (store: ReduxStore): ActionFunction =>
   async ({ request }): Promise<null | Response> => {
@@ -26,6 +33,21 @@ export const action =
     return null;
   };
 const Login = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const handleTestUser = async (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log(e);
+    const userCredential = {
+      email: "test1@gmail.com",
+      password: "secret",
+    };
+    const res = await customFetch.post("/auth/login", userCredential);
+    dispatch(loginUser(res.data.user));
+    console.log(res);
+
+    navigate("/products");
+  };
   return (
     <section className="h-screen grid place-items-center">
       <Card className="w-96 bg-muted">
@@ -46,9 +68,14 @@ const Login = () => {
               name="password"
               defaultValue="secret"
             />
-            <Button className="w-full" type="submit" variant="default">
-              Submit
+            <Button
+              className="w-full"
+              variant="default"
+              onClick={handleTestUser}
+            >
+              Test user
             </Button>
+            <SubmitBtn className="w-full mt-4" text="Login" />
             <p className="text-center mt-4">
               You dont have a account?{" "}
               <Button type="button" asChild variant="link">

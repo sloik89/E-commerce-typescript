@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { useAppSelector } from "@/hooks";
 import { CartItemsList, CartTotals, SectionTitle } from "../components";
 const Cart = () => {
-  const user = null;
+  const { user } = useAppSelector((state) => state.userState);
   const { numItemsInCart } = useAppSelector((state) => state.cartState);
   if (numItemsInCart === 0) {
     return <SectionTitle text="Empty card" />;
