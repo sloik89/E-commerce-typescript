@@ -76,7 +76,7 @@ export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 
 ### Fetch data using loader
 
-- setting up loader in the route
+- setting up loader in the App.tsx route
 
 ```ts
 {
@@ -97,7 +97,7 @@ import { type LoaderFunction } from "react-router-dom";
 import { customFetch, type ProductsResponse } from "@/utilis";
 ```
 
-- create function
+- create function in the component
 
 ```ts
 export const loader: LoaderFunction = async (): Promise<ProductsResponse> => {
@@ -114,8 +114,54 @@ import { useLoaderData } from "react-router-dom";
 const { products } = useLoaderData() as ProductsResponse;
 ```
 
-# add params on frontend
+# Using form data on react router
+
+- get formData
+- request is patameter of function
 
 ```ts
+const formData = await request.formData();
+```
 
+- change form data array [[],[]] to object
+
+```ts
+const data = Object.fromEntries(formData);
+```
+
+- you can't using hooks in function
+- pass store in router
+- you invoke function here and , need to return function
+
+```ts
+ {
+    path: "/login",
+    element: <Login />,
+    errorElement: <Error />,
+    action: loginUser(store),
+  },
+```
+
+- in component
+
+```ts
+import { type ReduxStore } from "@/store";
+import { ActionFunction } from "react-router-dom";
+export const action =
+  (store: ReduxStore): ActionFunction =>
+  async ({ request }): Promise<null | Response> => {
+    const formData = await request.formData();
+    const data = Object.fromEntries(formData);
+    console.log(data);
+    try {
+      const res = await customFetch.post("/auth/login", data);
+      console.log(res);
+      // dispatch action from store in fuction
+      store.dispatch(loginUser(res.data.user));
+      return redirect("/products");
+    } catch (err) {
+      console.log(err);
+    }
+    return null;
+  };
 ```

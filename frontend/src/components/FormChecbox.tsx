@@ -8,7 +8,7 @@ type FormCheckboxProps = {
 };
 const FormChecbox = ({ label, name, defaultValue }: FormCheckboxProps) => {
   const defaultChecked = defaultValue === "on" ? true : false;
-  console.log(defaultChecked);
+
   return (
     <div>
       <Label htmlFor={name}>{label || name}</Label>

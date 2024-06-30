@@ -6,7 +6,7 @@ import { logoutUser } from "@/features/user/userSlice";
 
 const Header = () => {
   const { user } = useAppSelector((state) => state.userState);
-  console.log(user);
+
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   // const [user, setUser] = useState<{ username: string } | null>({
@@ -14,7 +14,7 @@ const Header = () => {
   // });
   const handleLogout = () => {
     dispatch(logoutUser());
-    console.log("logout");
+
     navigate("/");
   };
   return (
