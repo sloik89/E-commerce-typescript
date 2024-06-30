@@ -8,7 +8,10 @@ import { AlignLeft } from "lucide-react";
 import { Button } from "./ui/button";
 import { links } from "@/utilis";
 import { NavLink } from "react-router-dom";
+import { useAppSelector } from "@/hooks";
+
 const LinksDropdown = () => {
+  const { user } = useAppSelector((state) => state.userState);
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild className="lg:hidden">
@@ -23,6 +26,9 @@ const LinksDropdown = () => {
         sideOffset={25}
       >
         {links.map((link) => {
+          const restrictedRoute =
+            link.label === "checkout" || link.label === "orders";
+          if (!user && restrictedRoute) return null;
           return (
             <DropdownMenuItem key={link.label} className="cursor-pointer">
               <NavLink

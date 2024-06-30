@@ -152,10 +152,10 @@ export const action =
   async ({ request }): Promise<null | Response> => {
     const formData = await request.formData();
     const data = Object.fromEntries(formData);
-    console.log(data);
+
     try {
       const res = await customFetch.post("/auth/login", data);
-      console.log(res);
+
       // dispatch action from store in fuction
       store.dispatch(loginUser(res.data.user));
       return redirect("/products");
