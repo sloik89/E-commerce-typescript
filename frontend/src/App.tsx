@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import {
   Landing,
@@ -9,7 +8,6 @@ import {
   Checkout,
   Cart,
   Orders,
-  SingleProduct,
   HomeLayout,
   Products,
   Product,
