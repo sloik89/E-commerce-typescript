@@ -4,11 +4,11 @@ import path from "path";
 // https://vitejs.dev/config/
 export default defineConfig({
   server: {
-    proxy: {
-      // "/uploads": "http://localhost:5000",
-      // "/": "http://localhost:5000",
-      "/api": "http://localhost:3000",
-    },
+    // proxy: {
+    //   // "/uploads": "http://localhost:5000",
+    //   // "/": "http://localhost:5000",
+    //   "/api": "http://localhost:3000",
+    // },
   },
   plugins: [react()],
   resolve: {

@@ -31,7 +31,7 @@ function CartTotalRow({
     <>
       <p className="flex justify-between text-sm">
         <span>{label}</span>
-        <span>{formatDollars(amount)}</span>
+        <span className="text-lg">{formatDollars(amount)}</span>
       </p>
       {lastRow ? null : <Separator />}
     </>

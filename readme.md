@@ -165,3 +165,34 @@ export const action =
     return null;
   };
 ```
+
+## Action in react router
+
+- by default form has get method
+- change to post and we handle form submission by yourself
+- post request must be provided aciton
+- common aproach to handle action in the same file
+
+```ts
+<Form method="POST"></Form>
+```
+
+- handle action
+
+```ts
+export const action: ActionFunction = async ({ request }): Promise<null> => {
+  const formData = await request.formData();
+  const data = Object.fromEntries(formData);
+  try {
+    const res = await customFetch.post("/auth/register", data);
+    console.log(res);
+  } catch (err) {
+    const resError =
+      err instanceof AxiosError ? err.response?.data.msg : "Register Failed";
+    console.log(resError);
+    toast({ description: resError });
+  }
+  console.log(data);
+  return null;
+};
+```
