@@ -7,7 +7,7 @@ export const loader =
   (store: ReduxStore): LoaderFunction =>
   async (): Promise<null | Response> => {
     const user = store.getState().userState.user;
-    console.log(user);
+
     if (!user) {
       return redirect("/login");
     }
@@ -16,7 +16,7 @@ export const loader =
 const Checkout = () => {
   const { user } = useAppSelector((state) => state.userState);
   const { cartTotal } = useAppSelector((state) => state.cartState);
-  console.log(cartTotal);
+
   if (cartTotal === 0) {
     return <SectionTitle text="You cart is empty" />;
   }

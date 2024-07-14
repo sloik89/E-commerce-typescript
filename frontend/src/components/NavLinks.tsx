@@ -5,7 +5,7 @@ import { useAppSelector } from "@/hooks";
 
 const NavLinks = () => {
   const { user } = useAppSelector((state) => state.userState);
-  console.log(user);
+
   return (
     <div className="hidden lg:flex justify-center items-center gap-x-4">
       {links.map((link) => {

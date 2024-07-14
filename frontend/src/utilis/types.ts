@@ -53,4 +53,13 @@ export type CartState = {
   tax: number;
   orderTotal: number;
 };
+export type Checkout = {
+  name: string;
+  address: string;
+  numItemsInCart: number;
+  cartItems: CartItem[];
+  orderTotal: string;
+  tax: string;
+  shipping: number;
+};
 export type ProductsResponseWithParams = ProductsResponse & { params: Params };

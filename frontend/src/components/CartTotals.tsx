@@ -6,7 +6,7 @@ const CartTotals = () => {
   const { cartTotal, shipping, tax, orderTotal } = useAppSelector(
     (state) => state.cartState
   );
-  console.log(cartTotal, shipping, tax, orderTotal);
+
   return (
     <Card className="p-8 bg-muted flex flex-col gap-y-4">
       <CartTotalRow label="Subtotal" amount={cartTotal} />
