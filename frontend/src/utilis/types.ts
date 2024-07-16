@@ -62,4 +62,21 @@ export type Checkout = {
   tax: string;
   shipping: number;
 };
+type OrdersMeta = {
+  pagination: { total: number; page: number; pages: number };
+};
+export type OrdersSchema = {
+  _id: string;
+  tax: number;
+  shippngFee: number;
+  total: number;
+  userName: string;
+  address: string;
+  updatedAt: string;
+  numItemsInCart: number;
+};
+export type OrderResponse = {
+  meta: OrdersMeta;
+  order: OrdersSchema[];
+};
 export type ProductsResponseWithParams = ProductsResponse & { params: Params };

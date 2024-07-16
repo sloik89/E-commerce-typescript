@@ -14,7 +14,7 @@ export const loader: LoaderFunction = async ({
   ]);
 
   const res = await customFetch<ProductsResponse>("products", { params });
-  console.log(res);
+
   return { ...res.data, params };
 };
 const Products = () => {
