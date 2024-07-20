@@ -196,3 +196,30 @@ export const action: ActionFunction = async ({ request }): Promise<null> => {
   return null;
 };
 ```
+
+## Complex pagination
+
+- on server
+
+```ts
+const page = Number(req.query.page) || 1;
+const limit = Number(req.query.limit) || 3;
+const skip = (page - 1) * limit;
+const pages = Math.ceil(countSearchedProducts / limit);
+const order = await Order.find({ user: _id }).skip(skip).limit(limit);
+/* page 1 limit 3
+      skip 0 * 3 = 0
+      pages  7 / 3 = 3.5 = 3
+      const order = await Order.find({ user: _id }).skip(0).limit(3)
+    page 2 limit 3
+      skip 1 * 3 = 3
+      pages  7 / 3 = 3.5 = 3
+      const order = await Order.find({ user: _id }).skip(3).limit(3)
+    page 3 limit 3
+      skip 2 * 3 = 6
+      pages  7 / 3 = 3.5 = 3
+      const order = await Order.find({ user: _id }).skip(6).limit(3)
+  */
+```
+
+- on frontend

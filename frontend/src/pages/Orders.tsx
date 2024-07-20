@@ -24,7 +24,7 @@ export const loader =
     const params = Object.fromEntries([
       ...new URL(request.url).searchParams.entries(),
     ]);
-    console.log(params);
+
     try {
       const res = await customFetch.get<OrderResponse>(
         "/orders/showAllMyOrder",
@@ -38,7 +38,7 @@ export const loader =
   };
 const Orders = () => {
   const { meta, order } = useLoaderData() as OrderResponse;
-  console.log(meta);
+
   return (
     <div>
       <h4>total orders:{meta.pagination.total}</h4>
