@@ -25,7 +25,7 @@ const SelectProductAmount = ({
   setAmount,
 }: ProductAmountProps | ProductCartProps) => {
   const cartItem = mode === Mode.CartItem;
-  console.log(cartItem);
+
   return (
     <>
       <h4 className="mb-4">Amount :</h4>

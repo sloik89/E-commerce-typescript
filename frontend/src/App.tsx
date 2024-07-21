@@ -43,11 +43,7 @@ const router = createBrowserRouter([
         loader: productsLoader,
       },
       // test page
-      {
-        path: "testpage",
-        element: <TestPage />,
-        loader: testLoader,
-      },
+
       {
         path: "products/:id",
         element: <Product />,
@@ -71,6 +67,11 @@ const router = createBrowserRouter([
         // action and loader
         loader: checkoutLoader(store),
         action: checkoutAction(store),
+      },
+      {
+        path: "testpage",
+        element: <TestPage />,
+        loader: testLoader(store),
       },
       {
         path: "orders",

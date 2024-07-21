@@ -27,4 +27,8 @@ export const links: Links[] = [
     href: "orders",
     label: "orders",
   },
+  {
+    href: "testpage",
+    label: "test",
+  },
 ];

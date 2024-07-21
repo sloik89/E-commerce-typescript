@@ -21,20 +21,6 @@ const ComplexPagination = () => {
   const { page, pages } = meta.pagination;
   const { search, pathname } = useLocation();
 
-  // const renderedPagination = pagination.map((pageNumber) => {
-  //   const isActive = pageNumber === page;
-  //   const url = constructUrl({ pageNumber, search, pathname });
-  //   return (
-  //     <PaginationItem key={pageNumber}>
-  //       <PaginationLink
-  //         className={isActive ? "bg-secondary pointer-events-none" : ""}
-  //         to={url}
-  //       >
-  //         {pageNumber}
-  //       </PaginationLink>
-  //     </PaginationItem>
-  //   );
-  // });
   const constructButtons = ({
     pageNumber,
     isActive,
@@ -60,6 +46,7 @@ const ComplexPagination = () => {
   };
   const renderedPagination = () => {
     let ReactPages: React.ReactNode[] = [];
+    console.log(page);
     // first page
     ReactPages.push(constructButtons({ pageNumber: 1, isActive: page === 1 }));
     // elipsis
@@ -72,7 +59,7 @@ const ComplexPagination = () => {
     }
     // elipsis
     if (page < pages - 1) {
-      ReactPages.push(constructEllipsis("dots-1"));
+      ReactPages.push(constructEllipsis("dots-2"));
     }
     // last page
     ReactPages.push(
@@ -80,12 +67,7 @@ const ComplexPagination = () => {
     );
     return ReactPages;
   };
-  // const { prevUrl, nextUrl } = constructPrevOrNextUrl({
-  //   currentPage: page,
-  //   search,
-  //   pageCount: pages,
-  //   pathname,
-  // });
+
   const { prevUrl, nextUrl } = PaginationNavigation({
     search,
     pathname,

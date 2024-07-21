@@ -4,41 +4,35 @@ import { type Products as SingleProduct } from "../utilis/";
 import { customFetch, formatDollars } from "@/utilis";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { SelectProductAmount, SelectProductColor, Test } from "@/components/";
+import { SelectProductAmount, SelectProductColor } from "@/components/";
 import { addItem } from "@/features/cart/cartSlice";
-import { useDispatch } from "react-redux";
 import { useAppDispatch } from "@/hooks";
 import { Mode } from "../components/SelectProductAmount";
 export const loader: LoaderFunction = async ({
   request,
   params,
 }): Promise<SingleProduct> => {
-  const searchParams = new URL(request.url).pathname.split("/")[2];
   const res = await customFetch<SingleProduct>(`products/${params.id}`);
-  console.log(params);
+
   return res.data;
 };
 const SingleProduct = () => {
   const dispatch = useAppDispatch();
   const {
-    category,
     colors,
     company,
     image,
     name,
     description,
     price,
-    inventory,
     _id: id,
   } = useLoaderData() as SingleProduct;
 
   const dollarAmount = formatDollars(price);
-  const [productColor, setProductColor] = useState(colors[0]);
+
   const [amount, setAmount] = useState(1);
   const [active, setActive] = useState(colors[0]);
   const handleBag = () => {
-    console.log("handle bag");
-
     dispatch(
       addItem({
         id: id + active,
@@ -91,7 +85,6 @@ const SingleProduct = () => {
           </Button>
         </div>
       </div>
-      <Test />
     </section>
   );
 };

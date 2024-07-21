@@ -15,7 +15,7 @@ export const constructUrl = ({
   url.set("page", pageNumber.toString());
 
   const route = url.toString();
-  console.log(route);
+
   return `${pathname}?${route}`;
 };
 type ConstructPrevUrlParams = {
@@ -56,7 +56,7 @@ export const PaginationNavigation = ({
 }: PaginationType): { prevUrl: string; nextUrl: string } => {
   let prevPage = currentPage - 1;
   if (prevPage === 0) prevPage = pages;
-  console.log(prevPage);
+
   const prevUrl = createUrl({ pageNumber: prevPage, search, pathname });
   let nextPage = currentPage + 1;
   if (nextPage > pages) nextPage = 1;
